@@ -1,6 +1,4 @@
 #include "core.h"
-#include "lcd.h"
-#include "Ds1307.h"
 
 task_t tasks[TASK_MAX];
 unsigned char TASK_NUM_POS = 15;
@@ -72,39 +70,9 @@ void gotosleep(void)
 }
 void task1(void)
 {
-		unsigned char Hour, Minute, Second, Mode,old_second;
-   Ds1307_Read_Time(&Hour, &Minute, &Second, &Mode);
-		if(old_second != Second)
-		{ 
-			old_second = Second;
-			LCD_Gotoxy(0,0);
-			LCD_Puts("Time: ");
-			LCD_PutChar(Hour/10+0x30);
-			LCD_PutChar(Hour%10+0x30);
-			LCD_PutChar(':');
-			LCD_PutChar(Minute/10+0x30);
-			LCD_PutChar(Minute%10+0x30);
-			LCD_PutChar(':');
-			LCD_PutChar(Second/10+0x30);
-			LCD_PutChar(Second%10+0x30);
-		}
+ // make your task
 }
 void task2(void)
 {	
-	unsigned char *code Days[] = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
-  unsigned char  Day, Date, Month, Year;
-	Ds1307_Read_Date(&Day, &Date, &Month, &Year);
-			{
-				LCD_Gotoxy(0,1);
-				LCD_Puts(Days[Day-1]);
-				LCD_PutChar(' ');
-				LCD_PutChar(Date/10+0x30);
-				LCD_PutChar(Date%10+0x30);
-				LCD_PutChar('/');
-				LCD_PutChar(Month/10+0x30);
-				LCD_PutChar(Month%10+0x30);
-				LCD_Puts("/20");
-				LCD_PutChar(Year/10+0x30);
-				LCD_PutChar(Year%10+0x30);
-			}
+ // make your task
 }
